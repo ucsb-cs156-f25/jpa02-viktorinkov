@@ -65,4 +65,12 @@ public class TeamTest {
         t2.addMember("bar");
         assertEquals(t1.hashCode(), t2.hashCode());
     }
+    
+    @Test void hashCode_cheating_test(){
+        Team t = new Team();
+        // instantiate t as a Team object
+        int result = t.hashCode();
+        int expectedResult = 1;
+        assertEquals(expectedResult, result);
+    }
 }
