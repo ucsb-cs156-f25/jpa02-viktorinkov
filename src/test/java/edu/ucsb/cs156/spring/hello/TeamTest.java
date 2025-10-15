@@ -40,8 +40,6 @@ public class TeamTest {
         Team correctClass = new Team("John");
         assertEquals(false, team.equals(wrongClass));
         assertEquals(false, team.equals(correctClass));
-        
-
     }
     
     @Test void equals_returns_names_members(){
@@ -56,5 +54,15 @@ public class TeamTest {
         assertEquals(true, teamOne.equals(teamOneCopy));
         assertEquals(false, teamOne.equals(teamTwo));
         assertEquals(false, teamOne.equals(teamOneFaulty));
+    }
+
+    @Test void hashCode_returns_same_hash(){
+        Team t1 = new Team();
+        t1.setName("foo");
+        t1.addMember("bar");
+        Team t2 = new Team();
+        t2.setName("foo");
+        t2.addMember("bar");
+        assertEquals(t1.hashCode(), t2.hashCode());
     }
 }
