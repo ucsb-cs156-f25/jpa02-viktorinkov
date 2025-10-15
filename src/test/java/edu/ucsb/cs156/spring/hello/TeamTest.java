@@ -22,5 +22,39 @@ public class TeamTest {
    
     // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
     // 100% mutation coverage (all mutants timed out or killed)
+    @Test
+    public void toString_returns_correct_string() {
+        assertEquals("Team(name=test-team, members=[])", team.toString());
+    }
+
+    @Test
+    public void equals_returns_same_object() {
+        Team dif_team = new Team("Other");
+        assertEquals(true, team.equals(team));
+        assertEquals(false, team.equals(dif_team));
+    }
+
+    @Test
+    public void equals_returns_different_class() {
+        String wrongClass = "Text";
+        Team correctClass = new Team("John");
+        assertEquals(false, team.equals(wrongClass));
+        assertEquals(false, team.equals(correctClass));
+        
+
+    }
     
+    @Test void equals_returns_names_members(){
+        Team teamOne = new Team("One");
+        Team teamOneCopy = new Team("One");
+        teamOne.addMember("Viktor");
+        teamOneCopy.addMember("Viktor");
+        Team teamOneFaulty = new Team("One");
+        teamOneFaulty.addMember("John");
+        Team teamTwo = new Team("Two");
+        teamTwo.addMember("John");
+        assertEquals(true, teamOne.equals(teamOneCopy));
+        assertEquals(false, teamOne.equals(teamTwo));
+        assertEquals(false, teamOne.equals(teamOneFaulty));
+    }
 }
